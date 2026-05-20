@@ -1,0 +1,8 @@
+{
+    "id": "ticket_001",
+    "customer": "Yossi Cohen",
+    "issue": "Cannot log into my account after password reset",
+    "status": "resolved",
+    "priority": "high",
+    "resolved_by": "Support Agent 1"
+}

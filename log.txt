@@ -1,0 +1,48 @@
+Day 1 - Python + JSON basics
+
+- Created a JSON file with a fake support ticket
+- Read it with json.load()
+- Modified values in memory
+- Wrote it back to disk with json.dump()
+- Learned the difference between "r" and "w" modes
+- Added a new key (resolved_by) that didn't exist before
+
+Confused me: the Break 3 example (turned out to be a bad example from Claude)
+Tomorrow: multiple files and loops
+
+============================================================
+
+Day 2 - Multiple tickets + loops
+
+- Created tickets.json with 5 tickets in a list
+- Looped over all tickets and printed each one
+- Counted open vs resolved tickets
+- Saved summary to report.txt
+- Learned the difference between "w" and "a" file modes
+
+Confused me: nothing, loops and logic felt familiar
+Tomorrow: API calls
+
+============================================================
+
+Day 3 - Weather API
+
+- Called the OpenWeather API with my own API key
+- Parsed a live JSON response from the internet
+- Converted Kelvin to Celsius with simple math
+- Appended temperature to report.txt without overwriting
+- Stored API key safely in .env file
+
+Confused me: nothing major today, felt familiar
+Tomorrow: Claude API - sending a ticket to AI and getting a response back
+
+============================================================
+
+Day 4 - Claude API
+
+- Got 5$ worth of Claude's API tokens.
+- Created a new python file called claude_classifier
+- Wrote a script that loads our tickets.json and sends it into claude api to recieve a classification
+- Installed a formmatter into VS code (Black Formatter - to use Shift+Alt+F) 
+
+Tomorrow - Saving claude's responses(Classification) back into our tickets.json file

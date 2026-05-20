@@ -1,0 +1,3 @@
+Open: 3
+Resolved: 2
+Current temperature in Tel Aviv: 25.05°C

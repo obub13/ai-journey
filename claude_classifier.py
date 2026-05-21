@@ -18,6 +18,23 @@ with open("tickets/tickets.json", "r") as file:
 
 # ticket = tickets[0]
 
+# for ticket in tickets:
+#     message = client.messages.create(
+#         model="claude-haiku-4-5-20251001",
+#         max_tokens=1024,
+#         messages=[
+#             {
+#                 "role": "user",
+#                 "content": f"Classify this support ticket into one of the categories: Technical Issue, Billing Issue, General Inquiry. \n\n Ticket:{ticket['issue']} \n\n Always respond in this exact format: Category - Reason. One line only..",
+#             }
+#         ],
+#     )
+#     print(f"{ticket['id']} - {ticket['customer']}: {message.content[0].text}")
+#     print("---")
+
+
+#   Day 5 - Adding claude's response to JSON
+#
 for ticket in tickets:
     message = client.messages.create(
         model="claude-haiku-4-5-20251001",
@@ -25,9 +42,17 @@ for ticket in tickets:
         messages=[
             {
                 "role": "user",
-                "content": f"Classify this support ticket into one of the categories: Technical Issue, Billing Issue, General Inquiry. \n\n Ticket:{ticket['issue']} \n\n Always respond in this exact format: Category - Reason. One line only..",
+                "content": f"Classify: {ticket['issue']}\n\nRespond with ONLY: Technical Issue, Billing Issue, or General Inquiry",
             }
         ],
     )
-    print(f"{ticket['id']} - {ticket['customer']}: {message.content[0].text}")
-    print("---")
+
+    category = message.content[0].text.strip()
+    ticket["category"] = category
+    print(f"{ticket['id']}: {category}")
+
+# Save back to file
+with open("tickets/tickets.json", "w") as file:
+    json.dump(tickets, file, indent=2)
+
+print("Done. Categories saved.")

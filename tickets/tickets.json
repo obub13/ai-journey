@@ -1,37 +1,42 @@
 [
-    {
-        "id":"ticket_001",
-        "customer":"Yossi Cohen",
-        "issue":"Cannot log into my account after password reset",
-        "status":"open",
-        "priorty":"high"
-    },
-    {
-        "id":"ticket_002",
-        "customer":"Dana Levi",
-        "issue":"App crashes every time I open the settings page",
-        "status":"open",
-        "priorty":"high"
-    },
-    {
-        "id":"ticket_003",
-        "customer":"Omer Shapira",
-        "issue":"I was charged twice for my subscription this month",
-        "status":"resolved",
-        "priorty":"medium"
-    },
-    {
-        "id":"ticket_004",
-        "customer":"Noa Mizrahi",
-        "issue":"Export to PDF button does nothing when clicked",
-        "status":"open",
-        "priorty":"low"
-    },
-    {
-        "id":"ticket_005",
-        "customer":"Tal Peretz",
-        "issue":"I need to update my billing address but cannot find where",
-        "status":"resolved",
-        "priorty":"medium"
-    }
+  {
+    "id": "ticket_001",
+    "customer": "Yossi Cohen",
+    "issue": "Cannot log into my account after password reset",
+    "status": "open",
+    "priorty": "high",
+    "category": "Technical Issue"
+  },
+  {
+    "id": "ticket_002",
+    "customer": "Dana Levi",
+    "issue": "App crashes every time I open the settings page",
+    "status": "open",
+    "priorty": "high",
+    "category": "Technical Issue"
+  },
+  {
+    "id": "ticket_003",
+    "customer": "Omer Shapira",
+    "issue": "I was charged twice for my subscription this month",
+    "status": "resolved",
+    "priorty": "medium",
+    "category": "Billing Issue"
+  },
+  {
+    "id": "ticket_004",
+    "customer": "Noa Mizrahi",
+    "issue": "Export to PDF button does nothing when clicked",
+    "status": "open",
+    "priorty": "low",
+    "category": "Technical Issue"
+  },
+  {
+    "id": "ticket_005",
+    "customer": "Tal Peretz",
+    "issue": "I need to update my billing address but cannot find where",
+    "status": "resolved",
+    "priorty": "medium",
+    "category": "Billing Issue"
+  }
 ]

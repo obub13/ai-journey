@@ -34,7 +34,7 @@ with open("tickets/tickets.json", "r") as file:
 
 
 #   Day 5 - Adding claude's response to JSON
-#
+# Classify each ticket and save the category back to the JSON file.
 for ticket in tickets:
     message = client.messages.create(
         model="claude-haiku-4-5-20251001",
@@ -47,6 +47,7 @@ for ticket in tickets:
         ],
     )
 
+    # Extract the category from the response and save it back to the ticket, strip any whitespace just in case.
     category = message.content[0].text.strip()
     ticket["category"] = category
     print(f"{ticket['id']}: {category}")

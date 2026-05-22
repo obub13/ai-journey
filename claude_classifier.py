@@ -8,7 +8,7 @@ import anthropic
 load_dotenv()
 
 # setting client var to interact with anthropic api using the API key stored in the .env file.
-client = anthropic.Anthropic(api_key=os.getenv("claude_api_key"))
+client = anthropic.Anthropic(api_key=os.getenv("CLAUDE_API_KEY"))
 
 # This code reads a JSON file containing support tickets, selects the first ticket, and sends its issue description to the Claude API for classification into one of three categories: Technical Issue, Billing Issue, or General Inquiry.
 # The response from the API is printed, which includes the category and a one-sentence reason for the classification.

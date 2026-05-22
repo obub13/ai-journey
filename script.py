@@ -59,7 +59,7 @@ import os
 #   DAY 3 - API CALLS
 #
 load_dotenv()
-openweather_api_key = os.getenv("openweather_api_key")
+openweather_api_key = os.getenv("OPENWEATHER_API_KEY")
 response = requests.get(
     f"https://api.openweathermap.org/data/2.5/weather?q=Tel Aviv&appid={openweather_api_key}"
 )

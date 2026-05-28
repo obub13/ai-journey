@@ -1,0 +1,46 @@
+{
+    "ticket_number": 1,
+    "user": "customer_name",
+    "status": "resolved",
+    "issue": "i need to add a new user to our system, please help me where to look ",
+    "conversation_history": [
+        {
+            "role": "user",
+            "content": "i need to add a new user to our system, please help me where to look "
+        },
+        {
+            "role": "assistant",
+            "content": "NEED_INFO: What is the name of your company or the specific travel and expense report system you use?"
+        },
+        {
+            "role": "user",
+            "content": "macompany, i just want to create a new user for a new worke r"
+        },
+        {
+            "role": "assistant",
+            "content": "NEED_INFO: Do you have administrative access to your company's travel and expense report system, or do you need to contact your system administrator to add the new user?"
+        },
+        {
+            "role": "user",
+            "content": "i am the admin "
+        },
+        {
+            "role": "assistant",
+            "content": "NEED_INFO: What is the exact name of your travel and expense report system or platform (for example, Concur, Expensify, SAP, or another vendor name)?"
+        },
+        {
+            "role": "user",
+            "content": "Just tell me where the create new user button is "
+        },
+        {
+            "role": "assistant",
+            "content": "NEED_INFO: I don't have access to your specific system interface. To help you locate the create new user button, I need to know: What is the name of the software/platform your company uses for travel and expense reports (for example: Concur, Expensify, SAP SuccessFactors, etc.)?"
+        },
+        {
+            "role": "user",
+            "content": "okay nevermind i found it "
+        }
+    ],
+    "final_answer": "Great! Glad you found the create new user button. If you need any further assistance with adding the user or have other questions about your travel and expense report system, feel free to reach out.",
+    "timestamp": "2026-05-28T20:24:35.600061"
+}

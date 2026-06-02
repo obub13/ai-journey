@@ -1,11 +1,14 @@
+import datetime
 import os
 from dotenv import load_dotenv
 import anthropic
 from flask import Flask, render_template, request
+from supabase import create_client
 
 load_dotenv()
 
 client = anthropic.Anthropic(api_key=os.getenv("CLAUDE_API_KEY"))
+supabase = create_client(os.getenv("SUPABASE_URL"), os.getenv("SUPABASE_KEY"))
 
 app = Flask(__name__)
 
@@ -42,6 +45,32 @@ def analyze():
                 ],
             )
             response = message.content[0].text
+
+            supabase_data = (
+                supabase.table("tickets")
+                .select("ticket_number")
+                .order("ticket_number", desc=True)
+                .limit(1)
+                .execute()
+            )
+            print(supabase_data.data)
+            if (
+                supabase_data.data
+                and supabase_data.data[0]["ticket_number"] is not None
+            ):
+                ticket_number = supabase_data.data[0]["ticket_number"] + 1
+            else:
+                ticket_number = 1
+            # Save the ticket, response, and metadata to Supabase
+            supabase.table("tickets").insert(
+                {
+                    "ticket_number": ticket_number,
+                    "issue": ticket,
+                    "final_answer": response,
+                    "status": "resolved",
+                    "timestamp": datetime.datetime.now().isoformat(),
+                }
+            ).execute()
             return render_template("index.html", result=response)
 
             ##Agent loop logic - if claude needs more info, ask user for more info and then send again with full context, if claude is resolved, return the answer

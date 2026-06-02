@@ -61,6 +61,7 @@ def analyze():
                 ticket_number = supabase_data.data[0]["ticket_number"] + 1
             else:
                 ticket_number = 1
+                
             # Save the ticket, response, and metadata to Supabase
             supabase.table("tickets").insert(
                 {

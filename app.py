@@ -89,6 +89,7 @@ def analyze():
     except Exception as e:
         return f"An error occurred on analyze route: {str(e)}"
 
+
 @app.route("/history")
 def history():
     try:

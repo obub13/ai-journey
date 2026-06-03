@@ -87,8 +87,16 @@ def analyze():
             #     print(response.replace("RESOLVED:", "").strip())
             # return ticket  # just returning it for now to test
     except Exception as e:
-        return f"An error occurred: {str(e)}"
+        return f"An error occurred on analyze route: {str(e)}"
 
+@app.route("/history")
+def history():
+    try:
+        result = supabase.table("tickets").select("*").order("ticket_number", desc=True).execute()
+        tickets = result.data
+        return render_template("history.html", tickets=tickets)
+    except Exception as e:
+        return f"An error occurred on history route: {str(e)}"
 
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

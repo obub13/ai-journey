@@ -1,63 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>Ticket History</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background: #f5f5f5;
-        }
-        h1 { color: #333; }
-        .ticket {
-            background: white;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #ddd;
-            margin-bottom: 16px;
-        }
-        .ticket-number {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 8px;
-        }
-        .issue {
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .answer {
-            color: #555;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        .timestamp {
-            font-size: 11px;
-            color: #aaa;
-            margin-top: 10px;
-        }
-        a {
-            color: #2563eb;
-            text-decoration: none;
-            font-size: 14px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+        background: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+      }
+      .ticket {
+        background: white;
+        padding: 20px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        margin-bottom: 16px;
+      }
+      .ticket-number {
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 8px;
+      }
+      .issue {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .answer {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.5;
+        white-space: pre-wrap;
+      }
+      .timestamp {
+        font-size: 11px;
+        color: #aaa;
+        margin-top: 10px;
+      }
+      a {
+        color: #2563eb;
+        text-decoration: none;
+        font-size: 14px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Ticket History</h1>
     <a href="/">← Back to analyzer</a>
-    <br><br>
+    <br /><br />
 
     {% for ticket in tickets %}
     <div class="ticket">
-        <div class="ticket-number">Ticket #{{ ticket.ticket_number }}</div>
-        <div class="issue">{{ ticket.issue }}</div>
-        <div class="answer">{{ ticket.final_answer }}</div>
-        <div class="timestamp">{{ ticket.timestamp }}</div>
+      <div class="ticket-number">Ticket #{{ ticket.ticket_number }}</div>
+      <div class="issue">{{ ticket.issue }}</div>
+      <div class="answer">{{ ticket.final_answer }}</div>
+      <div class="timestamp">{{ ticket.timestamp }}</div>
     </div>
     {% endfor %}
-
-</body>
+  </body>
 </html>

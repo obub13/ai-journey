@@ -61,7 +61,7 @@ def analyze():
                 ticket_number = supabase_data.data[0]["ticket_number"] + 1
             else:
                 ticket_number = 1
-                
+
             # Save the ticket, response, and metadata to Supabase
             supabase.table("tickets").insert(
                 {
@@ -93,11 +93,17 @@ def analyze():
 @app.route("/history")
 def history():
     try:
-        result = supabase.table("tickets").select("*").order("ticket_number", desc=True).execute()
+        result = (
+            supabase.table("tickets")
+            .select("*")
+            .order("ticket_number", desc=True)
+            .execute()
+        )
         tickets = result.data
         return render_template("history.html", tickets=tickets)
     except Exception as e:
         return f"An error occurred on history route: {str(e)}"
+
 
 if __name__ == "__main__":
     app.run(debug=False, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

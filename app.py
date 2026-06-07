@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import anthropic
 from flask import Flask, render_template, request
 from supabase import create_client
+import json as json_lib
 
 load_dotenv()
 
@@ -15,7 +16,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    result = supabase.table("tickets").select("id", count="exact").execute()
+    ticket_count = result.count
+    return render_template("index.html", ticket_count=ticket_count)
 
 
 @app.route("/analyze", methods=["POST"])
@@ -24,18 +27,28 @@ def analyze():
         thinking = True
         while thinking:
             ticket = request.form["ticket"]
+            if ticket == "":
+                return render_template(
+                    "index.html", result="Please enter a support ticket to analyze."
+                )
             message = client.messages.create(
                 model="claude-haiku-4-5-20251001",
                 max_tokens=1024,
-                system="""You are a helpful support assistant that analyzes support tickets and provides structured information, answer as a support agent would. no markdowns, no symbols, just plain text.
-                        1. Issue Type : (What type of issue is this? Examples: Permission / Expense report / Accounting/ Interface / Other)
-                        2. Urgency: (How urgent is this issue? Low / Medium / High)
-                        3. Suggested Action: (What should I check or do first to resolve this issue?)
-                        4. Draft Reply: (Write a helpful response to send back to the customer, be empathetic and polite, with human-like conversational tone, no AI-sounding text. Do not use markdown formatting, bold, or special symbols in the draft reply.)
+                system="""You are a support ticket analyzer. Analyze the ticket and respond with ONLY a valid JSON object, nothing else. No markdown, no extra text.
+                        {
+                            "issue_type": "Permission|Expense Report|Accounting|Interface|Other",
+                            "urgency": "Low|Medium|High",
+                            "suggested_action": "what to check or do first",
+                            "draft_reply": "a helpful human response to send back"
+                        }
+
                         IMPORTANT:
-                        - Always ask for more details if the issue is not clear.
-                        - Respond in the SAME LANGUAGE as the ticket (Hebrew tickets get Hebrew responses)
-                        - Never promise specific timelines, use "as soon as possible"
+                        - issue_type and urgency must always be in English
+                        - suggested_action and draft_reply must be in the SAME LANGUAGE as the ticket
+                        - Never promise specific timelines
+                        - draft_reply must sound human, no markdown, no bold, no symbols
+                        - If issue is unclear, ask for more details in draft_reply
+                        - Return ONLY the JSON object, no code blocks, no backticks
                         """,
                 messages=[
                     {
@@ -45,7 +58,21 @@ def analyze():
                 ],
             )
             response = message.content[0].text
+            clean_response = response.strip()
+            if "```" in clean_response:
+                clean_response = clean_response.split("```")[1]
+                clean_response = clean_response.replace("json", "", 1).strip()
 
+            try:
+                data = json_lib.loads(clean_response.strip())
+                issue_type = data["issue_type"]
+                urgency = data["urgency"]
+                final_answer = f"Issue Type: {data['issue_type'].strip()}<br>Urgency: {data['urgency'].strip()}<br>Suggested Action: {data['suggested_action'].strip()}<br><br>Draft Reply:<br>{data['draft_reply'].strip()}"
+
+            except:
+                issue_type = "Other"
+                urgency = "Medium"
+                final_answer = response
             supabase_data = (
                 supabase.table("tickets")
                 .select("ticket_number")
@@ -67,12 +94,20 @@ def analyze():
                 {
                     "ticket_number": ticket_number,
                     "issue": ticket,
-                    "final_answer": response,
+                    "final_answer": final_answer,
+                    "issue_type": issue_type,
+                    "urgency": urgency,
                     "status": "resolved",
                     "timestamp": datetime.datetime.now().isoformat(),
                 }
             ).execute()
-            return render_template("index.html", result=response)
+            count_result = (
+                supabase.table("tickets").select("id", count="exact").execute()
+            )
+            ticket_count = count_result.count
+            return render_template(
+                "index.html", result=final_answer, ticket_count=ticket_count
+            )
 
             ##Agent loop logic - if claude needs more info, ask user for more info and then send again with full context, if claude is resolved, return the answer
             # if response.startswith("NEED_INFO:"):

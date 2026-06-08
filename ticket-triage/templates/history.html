@@ -123,6 +123,18 @@
         color: #4338ca;
         margin-left: 6px;
       }
+      .badge-new {
+        background: #e0e7ff;
+        color: #4338ca;
+      }
+      .badge-in-progress {
+        background: #fef9c3;
+        color: #ca8a04;
+      }
+      .badge-resolved {
+        background: #dcfce7;
+        color: #16a34a;
+      }
     </style>
   </head>
   <body>
@@ -145,11 +157,25 @@
         <span class="badge badge-medium">Medium</span>
         {% elif ticket.urgency == "Low" %}
         <span class="badge badge-low">Low</span>
+        {% endif %} {% if ticket.status == "new" %}
+        <span class="badge badge-new">New</span>
+        {% elif ticket.status == "in_progress" %}
+        <span class="badge badge-in-progress">In Progress</span>
+        {% elif ticket.status == "resolved" %}
+        <span class="badge badge-resolved">Resolved</span>
         {% endif %}
         <span class="tag">{{ ticket.issue_type }}</span>
         <div class="issue">{{ ticket.issue }}</div>
         <div class="answer">{{ ticket.final_answer | safe}}</div>
         <div class="timestamp">{{ ticket.timestamp }}</div>
+        <form action="/update_status" method="POST" style="margin-top: 10px;">
+    <input type="hidden" name="ticket_id" value="{{ ticket.id }}">
+    <select name="status" onchange="this.form.submit()" style="font-size:12px; padding: 4px 8px; border-radius: 6px; border: 1px solid #e2e8f0; color: #475569;">
+        <option value="new" {% if ticket.status == "new" %}selected{% endif %}>New</option>
+        <option value="in_progress" {% if ticket.status == "in_progress" %}selected{% endif %}>In Progress</option>
+        <option value="resolved" {% if ticket.status == "resolved" %}selected{% endif %}>Resolved</option>
+    </select>
+</form>
       </div>
     </div>
     {% endfor %}

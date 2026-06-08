@@ -2,7 +2,7 @@ import datetime
 import os
 from dotenv import load_dotenv
 import anthropic
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request
 from supabase import create_client
 import json as json_lib
 
@@ -79,7 +79,7 @@ def analyze():
             .limit(1)
             .execute()
         )
-        print(supabase_data.data)
+
         if supabase_data.data and supabase_data.data[0]["ticket_number"] is not None:
             ticket_number = supabase_data.data[0]["ticket_number"] + 1
         else:
@@ -93,7 +93,7 @@ def analyze():
                 "final_answer": final_answer,
                 "issue_type": issue_type,
                 "urgency": urgency,
-                "status": "resolved",
+                "status": "new",
                 "timestamp": datetime.datetime.now().isoformat(),
             }
         ).execute()
@@ -123,6 +123,22 @@ def history():
         return render_template(
             "history.html", result=f"An error occurred on history route: {str(e)}"
         )
+
+
+# Add a route to update the status of a ticket with a dropdown menu in the history page, options: new, in_progress, resolved, closed
+
+
+@app.route("/update_status", methods=["POST"])
+def update_status():
+    ticket_id = request.form["ticket_id"]
+    new_status = request.form["status"]
+    result = (
+        supabase.table("tickets")
+        .update({"status": new_status})
+        .eq("id", ticket_id)
+        .execute()
+    )
+    return redirect("/history")
 
 
 if __name__ == "__main__":

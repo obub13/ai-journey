@@ -47,6 +47,7 @@ def analyze():
                         - draft_reply must sound human, no markdown, no bold, no symbols
                         - If issue is unclear, ask for more details in draft_reply
                         - Return ONLY the JSON object, no code blocks, no backticks
+                        - When responding in Hebrew, identify the grammatical gender from the ticket in the first sentence and maintain it consistently throughout the entire response. Do not switch gender mid-response.
                         """,
             messages=[
                 {

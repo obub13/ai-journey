@@ -91,6 +91,38 @@
         text-decoration: none;
         font-size: 14px;
       }
+      .badge {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .badge-high {
+        background: #fee2e2;
+        color: #dc2626;
+      }
+      .badge-medium {
+        background: #fef9c3;
+        color: #ca8a04;
+      }
+      .badge-low {
+        background: #dcfce7;
+        color: #16a34a;
+      }
+      .tag {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        background: #e0e7ff;
+        color: #4338ca;
+        margin-left: 6px;
+      }
     </style>
   </head>
   <body>
@@ -107,6 +139,14 @@
     <div class="content">
       <div class="ticket">
         <div class="ticket-number">Ticket #{{ ticket.ticket_number }}</div>
+        {% if ticket.urgency == "High" %}
+        <span class="badge badge-high">High</span>
+        {% elif ticket.urgency == "Medium" %}
+        <span class="badge badge-medium">Medium</span>
+        {% elif ticket.urgency == "Low" %}
+        <span class="badge badge-low">Low</span>
+        {% endif %}
+        <span class="tag">{{ ticket.issue_type }}</span>
         <div class="issue">{{ ticket.issue }}</div>
         <div class="answer">{{ ticket.final_answer | safe}}</div>
         <div class="timestamp">{{ ticket.timestamp }}</div>

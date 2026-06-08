@@ -29,4 +29,5 @@ I work in technical support and wanted to automate the initial triage process. T
 ## About this repository
 This repo documents my hands-on learning path — every project here was built from scratch as part of a structured daily learning habit.
 
-## Expect generic responses as the AI does not know your work system ##
+# Expect generic responses as the AI does not know your work system -
+I intentionally kept this as a triage tool rather than a full resolution agent because without system documentation, Claude can't give specific answers — and I'm not willing to sacrifice accuracy for automation #

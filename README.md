@@ -20,7 +20,7 @@ TriageAI is an AI-powered support ticket analyzer built for technical support ag
 ### Screenshots
 
 ![Analyzer](screenshots/analyzer.png)
-![History](screenshots\history.png)
+![History](screenshots/history.png)
 
 ### Tech Stack
 

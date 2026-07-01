@@ -57,6 +57,8 @@ def analyze():
             ],
         )
         response = message.content[0].text
+
+        # Defensive parsing handling JSON from LLM response, in case it returns extra text or code blocks
         clean_response = response.strip()
         if "```" in clean_response:
             clean_response = clean_response.split("```")[1]

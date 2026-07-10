@@ -1,8 +1,10 @@
 from dataclasses import dataclass
+from typing import Optional
 
 """
 StockQuote — Standard data contract for stock quote responses.
 PriceCandle — Standard data contract for stock price candle responses.
+NewsItem — Standard data contract for stock news item responses.
 
 
 Defines the normalized shape that all three API adapters (Finnhub, Twelve Data, Alpaca)
@@ -23,10 +25,8 @@ class StockQuote:
     previous_close: float
     timestamp: str
     source: str
-    
-    
-    
-    
+
+
 @dataclass
 class PriceCandle:
     timestamp: str
@@ -35,3 +35,12 @@ class PriceCandle:
     low: float
     close: float
     volume: int
+
+
+@dataclass
+class NewsItem:
+    headline: str
+    summary: Optional[str]
+    source: str
+    url: str
+    published_at: str

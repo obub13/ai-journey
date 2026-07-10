@@ -1,0 +1,147 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1783438585.7172158,
+    "ast_hash": "1dedd8e7180b4bed009d532c0afad627",
+    "semantic_hash": "1dedd8e7180b4bed009d532c0afad627"
+  },
+  "personal_assistant/stock_analysis/adapters/alpaca_adapter.py": {
+    "mtime": 1783435718.0862541,
+    "ast_hash": "f9c586456e9c256beee4503a8cbb4ecf",
+    "semantic_hash": "f9c586456e9c256beee4503a8cbb4ecf"
+  },
+  "personal_assistant/stock_analysis/adapters/finnhub_adapter.py": {
+    "mtime": 1783273585.7852552,
+    "ast_hash": "41c22ad0eb7982ce41fc93373339483c",
+    "semantic_hash": "41c22ad0eb7982ce41fc93373339483c"
+  },
+  "personal_assistant/stock_analysis/adapters/twelve_data_adapter.py": {
+    "mtime": 1783274555.6206582,
+    "ast_hash": "40fd808e800309324c914340a8117192",
+    "semantic_hash": "40fd808e800309324c914340a8117192"
+  },
+  "personal_assistant/stock_analysis/app.py": {
+    "mtime": 1783359667.7203846,
+    "ast_hash": "181fe85b412607f7d74cd3961cf3a936",
+    "semantic_hash": "181fe85b412607f7d74cd3961cf3a936"
+  },
+  "personal_assistant/stock_analysis/db/supabase.py": {
+    "mtime": 1782929778.0391817,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "personal_assistant/stock_analysis/models/stock_model.py": {
+    "mtime": 1783273512.6492677,
+    "ast_hash": "4ad816c94322080976b859adfceb5d97",
+    "semantic_hash": "4ad816c94322080976b859adfceb5d97"
+  },
+  "personal_assistant/stock_analysis/routes/stocks_route.py": {
+    "mtime": 1782929724.844631,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "personal_assistant/stock_analysis/services/market_data.py": {
+    "mtime": 1782929734.7139962,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  "personal_assistant/stocks_analyzer.py": {
+    "mtime": 1782925107.5570908,
+    "ast_hash": "ffaac0a8c8876c01d91cd1e8fb5c6942",
+    "semantic_hash": "ffaac0a8c8876c01d91cd1e8fb5c6942"
+  },
+  "scripts/claude_classifier.py": {
+    "mtime": 1779645346.0992212,
+    "ast_hash": "e703217659c326bcf1693df087bf46a6",
+    "semantic_hash": "e703217659c326bcf1693df087bf46a6"
+  },
+  "scripts/claude_weather.py": {
+    "mtime": 1779725840.309685,
+    "ast_hash": "286816e9a9b9db5752cdb4e20941b8ee",
+    "semantic_hash": "286816e9a9b9db5752cdb4e20941b8ee"
+  },
+  "scripts/daily_brief.py": {
+    "mtime": 1779820889.1418197,
+    "ast_hash": "cc2b052055de5727a09609594eaa1e1c",
+    "semantic_hash": "cc2b052055de5727a09609594eaa1e1c"
+  },
+  "scripts/script.py": {
+    "mtime": 1779451634.8290503,
+    "ast_hash": "7231fff399e93d918c8f79de0bdc6bcd",
+    "semantic_hash": "7231fff399e93d918c8f79de0bdc6bcd"
+  },
+  "scripts/support_agent.py": {
+    "mtime": 1780146777.798112,
+    "ast_hash": "4eea7b3027dc516aedc67a231e1c4d10",
+    "semantic_hash": "4eea7b3027dc516aedc67a231e1c4d10"
+  },
+  "scripts/ticket_triage.py": {
+    "mtime": 1779647388.009839,
+    "ast_hash": "afe84b04d5f01eba206b21ecd47459f6",
+    "semantic_hash": "afe84b04d5f01eba206b21ecd47459f6"
+  },
+  "ticket-triage/app.py": {
+    "mtime": 1781720737.0398538,
+    "ast_hash": "686b5341e2bdb038f640ede57e53006d",
+    "semantic_hash": "686b5341e2bdb038f640ede57e53006d"
+  },
+  "tickets+logs/data.json": {
+    "mtime": 1778927239.011764,
+    "ast_hash": "0a45c1b84d3dade0a6f5303ed4c10277",
+    "semantic_hash": "0a45c1b84d3dade0a6f5303ed4c10277"
+  },
+  "tickets+logs/ticket_data.json": {
+    "mtime": 1780146756.246795,
+    "ast_hash": "6e87bad0bed868af31ae1ec0c8772567",
+    "semantic_hash": "6e87bad0bed868af31ae1ec0c8772567"
+  },
+  "tickets+logs/tickets.json": {
+    "mtime": 1779357169.930211,
+    "ast_hash": "c5fcb54c9b844e2036e0e8fe0022f06a",
+    "semantic_hash": "c5fcb54c9b844e2036e0e8fe0022f06a"
+  },
+  "AGENTS.md": {
+    "mtime": 1780063830.8762162,
+    "ast_hash": "2cb73eb79183e60f532aa9b01aa227ab",
+    "semantic_hash": "2cb73eb79183e60f532aa9b01aa227ab"
+  },
+  "CLAUDE.md": {
+    "mtime": 1783438385.2506657,
+    "ast_hash": "8a6643a420fdad6bfb583523bc6cef16",
+    "semantic_hash": "8a6643a420fdad6bfb583523bc6cef16"
+  },
+  "README.md": {
+    "mtime": 1780938536.859121,
+    "ast_hash": "9055b728b453550863567c36a5145d3c",
+    "semantic_hash": "9055b728b453550863567c36a5145d3c"
+  },
+  "ticket-triage/requirements.txt": {
+    "mtime": 1780420527.3009512,
+    "ast_hash": "efe0d347394a63a01922cee41045fe0b",
+    "semantic_hash": "efe0d347394a63a01922cee41045fe0b"
+  },
+  "ticket-triage/templates/history.html": {
+    "mtime": 1780920711.8108597,
+    "ast_hash": "d48ddf1a15f9eb0a3162be5faa758070",
+    "semantic_hash": "d48ddf1a15f9eb0a3162be5faa758070"
+  },
+  "ticket-triage/templates/index.html": {
+    "mtime": 1780915640.4078505,
+    "ast_hash": "789db1e3466b1ddb4e7139ab66d549a5",
+    "semantic_hash": "789db1e3466b1ddb4e7139ab66d549a5"
+  },
+  "tickets+logs/report.txt": {
+    "mtime": 1779121923.6219127,
+    "ast_hash": "ae128effae347d4a0ff5c9ed29eb49b1",
+    "semantic_hash": "ae128effae347d4a0ff5c9ed29eb49b1"
+  },
+  "screenshots/analyzer.png": {
+    "mtime": 1780916140.1325092,
+    "ast_hash": "aef534abbeef2c4083db943f944cb4fa",
+    "semantic_hash": "aef534abbeef2c4083db943f944cb4fa"
+  },
+  "screenshots/history.png": {
+    "mtime": 1780916325.6690912,
+    "ast_hash": "bad14af0272e9cefc25f8f28181ddede",
+    "semantic_hash": "bad14af0272e9cefc25f8f28181ddede"
+  }
+}

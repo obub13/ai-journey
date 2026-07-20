@@ -7,6 +7,8 @@ from dotenv import load_dotenv
 from models.stock_model import NewsItem
 from datetime import datetime, timedelta, timezone
 
+from adapters.errors import AdapterError
+
 load_dotenv()
 
 
@@ -41,10 +43,12 @@ def get_stock_news(symbol: str):
             "start": start.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "end": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
         },
+        timeout=5,
     )
     if r.status_code == 200:
         news_list = []
-        for item in r.json().get("news", []):
+        data = r.json()
+        for item in data.get("news", []):
             news_list.append(
                 NewsItem(
                     headline=_clean_text(item.get("headline")),
@@ -56,6 +60,6 @@ def get_stock_news(symbol: str):
             )
         return news_list
     else:
-        raise Exception(
+        raise AdapterError(
             f"alpaca: Error fetching news for {symbol}: {r.status_code} - {r.text}"
         )
